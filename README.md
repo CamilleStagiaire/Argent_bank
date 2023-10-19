@@ -18,6 +18,10 @@ npm run populate-db
 npx create-react-app argentbank  
 npm install --save-dev eslint-config-prettier   
 npm install react-router-dom  
+  
+- Mise en place du front:  
+bibliothèques @fortawesome/react-fontawesome et @fortawesome/free-solid-svg-icons  
+page Home  
 
 - Installation des outils Redux:  
 npm install @reduxjs/toolkit  
