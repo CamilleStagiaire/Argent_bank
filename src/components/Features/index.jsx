@@ -1,4 +1,3 @@
-// Importer les images en haut de votre fichier
 import iconChat from '../../assets/icon-chat.png';
 import iconMoney from '../../assets/icon-money.png';
 import iconSecurity from '../../assets/icon-security.png';

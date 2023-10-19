@@ -6,7 +6,7 @@ html {
     color: #2c3e50;
   }
   
-  body {
+  body, #root {
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -163,6 +163,10 @@ html {
     border-color: #00bc77;
     background-color: #00bc77;
     color: #fff;
+  }
+
+  .sign-in-button:hover {
+    text-decoration: underline;
   }
   
   .sign-in-content {

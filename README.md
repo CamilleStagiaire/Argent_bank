@@ -20,8 +20,8 @@ npm install --save-dev eslint-config-prettier
 npm install react-router-dom  
   
 - Mise en place du front:  
-bibliothèques @fortawesome/react-fontawesome et @fortawesome/free-solid-svg-icons  
 page Home  
+page SignIn  
 
 - Installation des outils Redux:  
 npm install @reduxjs/toolkit  

@@ -1,13 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../assets/argentBankLogo.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import logo from '../../../assets/argentBankLogo.png';
 
-/**
- * Header
- * @returns {React.Element}
- */
 const Header = () => {
   return (
     <nav className="main-nav">
@@ -17,7 +11,7 @@ const Header = () => {
         </Link>
         <div>
             <Link className="main-nav-item" to="/sign-in" aria-label="Sign in">
-                <FontAwesomeIcon icon={faUserCircle} /> Sign In
+            <i className="fa fa-user-circle"></i> Sign In
             </Link>
         </div>
     </nav>

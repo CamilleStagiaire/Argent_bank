@@ -1,7 +1,3 @@
-/**
- * Footer
- * @returns {React.Element}
- */
 const Footer = () => {
   return (
     <footer className="footer">
