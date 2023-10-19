@@ -17,7 +17,6 @@ npm run populate-db
 **Dossier argentbank:**  
 npx create-react-app argentbank  
 npm install --save-dev eslint-config-prettier   
-npm install sass  
 npm install react-router-dom  
 
 - Installation des outils Redux:  
