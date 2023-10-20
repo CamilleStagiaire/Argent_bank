@@ -1,10 +1,26 @@
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { signIn } from '../../redux/userSlice';
+import localStorageService from '../../services/localStorageService'; 
+
 const SignIn = () => {
+  const dispatch = useDispatch();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const username = event.target.username.value; // Valeur entrée par l'utilisateur
+    dispatch(signIn(username));
+
+    localStorageService.setAuthData(username);
+    window.location.href = '/user';
+  };
+
   return (
     <main className="main bg-dark">
       <section className="sign-in-content">
         <i className="fa fa-user-circle sign-in-icon"></i>
         <h1>Sign In</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="input-wrapper">
             <label htmlFor="username">Username</label>
             <input type="text" id="username" required />

@@ -1,21 +1,58 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { signOut } from '../../../redux/userSlice';
 import logo from '../../../assets/argentBankLogo.png';
+import localStorageService from '../../../services/localStorageService';
 
 const Header = () => {
-  return (
-    <nav className="main-nav">
-        <Link className="main-nav-logo" to="/" aria-label="Argent Bank Home">
-            <img className="main-nav-logo-image" src={logo} alt="Argent Bank Logo" />
-            <h1 className="sr-only">Argent Bank</h1>
-        </Link>
-        <div>
-            <Link className="main-nav-item" to="/sign-in" aria-label="Sign in">
-            <i className="fa fa-user-circle"></i> Sign In
+    const dispatch = useDispatch();
+
+    // Etat d'authentification et nom d'utilisateur à partir du store Redux
+    const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+    const username = useSelector((state) => state.user.username);
+
+    // Gestionnaire pour la déconnexion
+    const handleSignOut = () => {
+        dispatch(signOut());
+        localStorageService.clearAuthData();
+    };
+
+    return (
+        <nav className="main-nav">
+            <Link className="main-nav-logo" to="/" aria-label="Argent Bank Home">
+                <img className="main-nav-logo-image" src={logo} alt="Argent Bank Logo" />
+                <h1 className="sr-only">Argent Bank</h1>
             </Link>
-        </div>
-    </nav>
-  );
+            <div>
+                {isAuthenticated ? (
+                    <>
+                        <Link className="main-nav-item" to="/user" aria-label="User profile">
+                            <i className="fa fa-user-circle"></i> {username}
+                        </Link>
+                        <Link 
+                            to="/" 
+                            className="main-nav-item" 
+                            onClick={handleSignOut} 
+                            aria-label="Sign out"
+                        >
+                            <i className="fa fa-sign-out"></i> Sign Out
+                        </Link>
+                    </>
+                ) : (
+                    <>
+                        <Link 
+                            className="main-nav-item" 
+                            to="/sign-in" 
+                            aria-label="Sign in"
+                        >
+                            <i className="fa fa-user-circle"></i> Sign In
+                        </Link>
+                    </>
+                )}
+            </div>
+        </nav>
+    );
 };
 
 export default Header;

@@ -22,10 +22,14 @@ npm install react-router-dom
 - Mise en place du front:  
 page Home  
 page SignIn  
+page User  
 
 - Installation des outils Redux:  
+npm install react-redux  
 npm install @reduxjs/toolkit  
 npm install react-query  
+
+- Mise en place du Store Redux, d'un local Storage et d'une gestion d'authentification pour accéder à la page User  
 
 # Compétences évaluées:
 - S'authentifier à une API  
