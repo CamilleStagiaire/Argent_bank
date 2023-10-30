@@ -1,18 +1,27 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { signIn } from '../../redux/userSlice';
-import localStorageService from '../../services/localStorageService'; 
+import localStorageService from '../../services/localStorageService';
+import apiService from '../../services/apiService';
 
 const SignIn = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const username = event.target.username.value; // Valeur entrée par l'utilisateur
-    dispatch(signIn(username));
 
-    localStorageService.setAuthData(username);
-    window.location.href = '/user';
+    const email = event.target.username.value;
+    const password = event.target.password.value;
+
+    const result = await apiService.login(email, password);
+
+    if (result.success) {
+      localStorageService.setAuthData(email); 
+      dispatch(signIn(email));
+      window.location.href = '/user';
+    } else {
+      alert(result.message);
+    }
   };
 
   return (

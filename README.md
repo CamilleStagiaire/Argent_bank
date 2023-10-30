@@ -30,6 +30,7 @@ npm install @reduxjs/toolkit
 npm install react-query  
 
 - Mise en place du Store Redux, d'un local Storage et d'une gestion d'authentification pour accéder à la page User  
+- Fichier ApiService pour les appels API  
 
 # Compétences évaluées:
 - S'authentifier à une API  
