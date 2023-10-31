@@ -6,6 +6,7 @@ export const userSlice = createSlice({
     isAuthenticated: false,
     username: null,
     firstName: null,
+    lastName: null,
   },
   reducers: {
     signIn: (state, action) => {
@@ -19,11 +20,14 @@ export const userSlice = createSlice({
     setFirstName: (state, action) => {
       state.firstName = action.payload;
     },
+    setLastName: (state, action) => {
+      state.lastName = action.payload;
+    },
   },
 });
 
 // Les actions générées à partir des reducers.
-export const { signIn, signOut, setFirstName  } = userSlice.actions;
+export const { signIn, signOut, setFirstName, setLastName  } = userSlice.actions;
 
 // Le reducer
 export default userSlice.reducer;

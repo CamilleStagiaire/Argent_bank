@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { signIn, setFirstName } from '../../redux/userSlice';
+import { signIn, setFirstName, setLastName  } from '../../redux/userSlice';
 import localStorageService from '../../services/localStorageService';
 import apiService from '../../services/apiService';
 
@@ -21,7 +21,9 @@ const SignIn = () => {
       const profileResult = await apiService.getUserProfile(token);
       if (profileResult) {
         dispatch(setFirstName(profileResult.firstName));
-        localStorageService.setAuthData(email, token, profileResult.firstName);
+        dispatch(setLastName(profileResult.lastName));
+        
+        localStorageService.setAuthData(email, token, profileResult.firstName, profileResult.lastName);
         window.location.href = '/user';
       }
     } else {

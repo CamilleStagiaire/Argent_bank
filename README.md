@@ -27,10 +27,12 @@ page User
 - Installation des outils Redux:  
 npm install react-redux  
 npm install @reduxjs/toolkit  
-npm install react-query  
 
 - Mise en place du Store Redux, d'un local Storage et d'une gestion d'authentification pour accéder à la page User  
-- Fichier ApiService pour les appels API  
+
+- Fichier ApiService pour les appels API:  
+login pour une connexion au serveur avec l'email et le mot de passe  
+getUserProfile pour obtenir le profil de l'utilisateur avec le token d'authentification
 
 # Compétences évaluées:
 - S'authentifier à une API  
