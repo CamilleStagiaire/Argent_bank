@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { signOut } from '../../../redux/userSlice';
@@ -7,10 +6,8 @@ import localStorageService from '../../../services/localStorageService';
 
 const Header = () => {
     const dispatch = useDispatch();
-
-    // Etat d'authentification et nom d'utilisateur à partir du store Redux
+    const firstName = useSelector((state) => state.user.firstName);
     const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
-    const username = useSelector((state) => state.user.username);
 
     // Gestionnaire pour la déconnexion
     const handleSignOut = () => {
@@ -28,7 +25,7 @@ const Header = () => {
                 {isAuthenticated ? (
                     <>
                         <Link className="main-nav-item" to="/user" aria-label="User profile">
-                            <i className="fa fa-user-circle"></i> {username}
+                            <i className="fa fa-user-circle"></i>  {firstName}
                         </Link>
                         <Link 
                             to="/" 

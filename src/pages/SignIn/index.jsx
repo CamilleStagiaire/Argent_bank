@@ -1,6 +1,5 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
-import { signIn } from '../../redux/userSlice';
+import { signIn, setFirstName } from '../../redux/userSlice';
 import localStorageService from '../../services/localStorageService';
 import apiService from '../../services/apiService';
 
@@ -14,11 +13,17 @@ const SignIn = () => {
     const password = event.target.password.value;
 
     const result = await apiService.login(email, password);
-
     if (result.success) {
-      localStorageService.setAuthData(email); 
+      const token = result.token;
       dispatch(signIn(email));
-      window.location.href = '/user';
+
+      // Récupérer le profil de l'utilisateur
+      const profileResult = await apiService.getUserProfile(token);
+      if (profileResult) {
+        dispatch(setFirstName(profileResult.firstName));
+        localStorageService.setAuthData(email, token, profileResult.firstName);
+        window.location.href = '/user';
+      }
     } else {
       alert(result.message);
     }
