@@ -24,7 +24,7 @@ const SignIn = () => {
         dispatch(setLastName(profileResult.lastName));
         
         localStorageService.setAuthData(email, token, profileResult.firstName, profileResult.lastName);
-        window.location.href = '/user';
+        window.location.href = '/profile';
       }
     } else {
       alert(result.message);

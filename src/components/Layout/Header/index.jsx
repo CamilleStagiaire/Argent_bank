@@ -32,7 +32,7 @@ const Header = () => {
           <>
             <Link
               className="main-nav-item"
-              to="/user"
+              to="/profile"
               aria-label="User profile"
             >
               <i className="fa fa-user-circle"></i> {firstName}
@@ -48,7 +48,7 @@ const Header = () => {
           </>
         ) : (
           <>
-            <Link className="main-nav-item" to="/sign-in" aria-label="Sign in">
+            <Link className="main-nav-item" to="/login" aria-label="Sign in">
               <i className="fa fa-user-circle"></i> Sign In
             </Link>
           </>
