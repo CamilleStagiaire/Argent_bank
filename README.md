@@ -32,7 +32,10 @@ npm install @reduxjs/toolkit
 
 - Fichier ApiService pour les appels API:  
 login pour une connexion au serveur avec l'email et le mot de passe  
-getUserProfile pour obtenir le profil de l'utilisateur avec le token d'authentification
+getUserProfile pour obtenir le profil de l'utilisateur avec le token d'authentification  
+
+- Intégration des informations de transaction:  
+fichier data.json et composant Transactions  
 
 # Compétences évaluées:
 - S'authentifier à une API  

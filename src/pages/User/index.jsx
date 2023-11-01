@@ -1,37 +1,49 @@
-import { useSelector } from 'react-redux';
-import AccountSection from '../../components/AccountSection';
+import { useSelector, useDispatch } from 'react-redux';
+import Transactions from '../../components/Transactions';
+import { setShowTransactions } from '../../redux/userSlice';
+import data from '../../datas/data.json';
 
 const User = () => {
-  const firstName = useSelector((state) => state.user.firstName);
-  const lastName = useSelector((state) => state.user.lastName);
+  const showTransactions = useSelector((state) => state.user.showTransactions);
+  const dispatch = useDispatch();
+  const { firstName, lastName } = useSelector((state) => state.user);
+
+  const accountSection = (type) => (
+    <section className="account">
+      <div className="account-content-wrapper">
+        <h3 className="account-title">{data[type].title}</h3>
+        <p className="account-amount">{data[type].amount}</p>
+        <p className="account-amount-description">{data[type].description}</p>
+      </div>
+      <div className="account-content-wrapper cta">
+        <button className="transaction-button" onClick={() => dispatch(setShowTransactions(type))}>View transactions</button>
+      </div>
+    </section>
+  );
+
   return (
     <main className="main bg-dark">
-      <div className="header">
-        <h1>
-          Welcome back <br></br> {firstName} {lastName}!
-        </h1>
-        <button className="edit-button">Edit Name</button>
-      </div>
-      <h2 className="sr-only">Accounts</h2>
-      
-      <AccountSection 
-        title="Argent Bank Checking (x8349)"
-        amount="$2,082.79"
-        description="Available Balance"
-      />
-      
-      <AccountSection 
-        title="Argent Bank Savings (x6712)"
-        amount="$10,928.42"
-        description="Available Balance"
-      />
-      
-      <AccountSection 
-        title="Argent Bank Credit Card (x8349)"
-        amount="$184.30"
-        description="Current Balance"
-      />
-      
+      {!showTransactions && (
+        <div className="header">
+          <h1>
+            Welcome back <br /> {firstName} {lastName}!
+          </h1>
+          <button className="edit-button">Edit Name</button>
+        </div>
+      )}
+
+      {showTransactions ? (
+        <Transactions
+          data={data[showTransactions]}
+          setShowTransactions={() => dispatch(setShowTransactions(null))}
+        />
+      ) : (
+        <>
+          {accountSection('Checking')}
+          {accountSection('Savings')}
+          {accountSection('CreditCard')}
+        </>
+      )}
     </main>
   );
 };

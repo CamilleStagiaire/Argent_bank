@@ -1,0 +1,17 @@
+.collapse_chevron::after {
+  content: url('../assets/chevronUp.svg');
+}
+
+.collapse_chevron.open::after {
+  content: url('../assets/chevronDown.svg');
+}
+
+.collapse_text {
+  display: none;
+  transition: max-height 0.3s ease-out;
+  overflow: hidden;
+}
+
+.collapse_text.open {
+  display: block;
+}
