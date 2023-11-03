@@ -38,6 +38,10 @@ getUserProfile pour obtenir le profil de l'utilisateur avec le token d'authentif
 fichier data.json et composant Transactions  
 mise en place du style avec les composants Collapse, ToggleButton et le fichier wireframes.css  
 
+- Fonctionnalité de mise à jour du profil:  
+fonction updateUserProfile dans apiService  
+mise à jour de la vue dans User  
+
 # Compétences évaluées:
 - S'authentifier à une API  
 - Implémenter un gestionnaire d'état dans une application React  

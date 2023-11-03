@@ -29,7 +29,7 @@ const Transactions = ({ data, setShowTransactions }) => {
         </thead>
         <tbody>
           {data.transactions.map((transaction, index) => (
-            <React.Fragment key={transaction.date + transaction.description}>
+            <React.Fragment key={transaction.id}>
               <tr className="transaction-list">
               <td>
                   <Collapse

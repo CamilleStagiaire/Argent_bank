@@ -1,11 +1,20 @@
 import { useState } from 'react';
-import { useSelector} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setFirstName, setLastName } from '../../redux/userSlice';
 import Transactions from '../../components/Transactions';
 import data from '../../datas/data.json';
+import localStorageService from '../../services/localStorageService';
+import apiService from '../../services/apiService';
 
 const User = () => {
   const [showTransactions, setShowTransactions] = useState(null);
   const { firstName, lastName } = useSelector((state) => state.user);
+  const [editFirstName, setEditFirstName] = useState(firstName || "");
+  const [editLastName, setEditLastName] = useState(lastName || "");
+  
+  const [isEditing, setIsEditing] = useState(false);
+  const dispatch = useDispatch();
+  const { token } = localStorageService.getAuthData();
 
   const accountSection = (type) => (
     <section className="account">
@@ -20,6 +29,23 @@ const User = () => {
     </section>
   );
 
+  const handleChange = async () => {
+    const result = await apiService.updateUserProfile(token, editFirstName, editLastName);
+    if (result.success) {
+      dispatch(setFirstName(editFirstName));
+      dispatch(setLastName(editLastName));
+      setIsEditing(false);
+    } else {
+      console.error(result.message);
+    }
+  };
+
+  const resetEditFields = () => {
+    setEditFirstName(firstName || "");
+    setEditLastName(lastName || "");
+};
+
+
   return (
     <main className="main bg-dark">
       {!showTransactions && (
@@ -27,7 +53,24 @@ const User = () => {
           <h1>
             Welcome back <br /> {firstName} {lastName}!
           </h1>
-          <button className="edit-button">Edit Name</button>
+          {isEditing ? (
+            <>
+              <input 
+                value={editFirstName} 
+                onChange={(e) => setEditFirstName(e.target.value)} 
+                placeholder="First Name" 
+              />
+              <input 
+                value={editLastName} 
+                onChange={(e) => setEditLastName(e.target.value)} 
+                placeholder="Last Name" 
+              />
+              <button onClick={handleChange}>Save</button>
+              <button onClick={() => { setIsEditing(false); resetEditFields(); }}>Cancel</button>
+            </>
+          ) : (
+            <button className="edit-button" onClick={() => setIsEditing(true)}>Edit Name</button>
+          )}
         </div>
       )}
 
@@ -37,11 +80,11 @@ const User = () => {
           setShowTransactions={() => setShowTransactions(null)}
         />
       ) : (
-        <>
+        <div>
           {accountSection('Checking')}
           {accountSection('Savings')}
           {accountSection('CreditCard')}
-        </>
+        </div>
       )}
     </main>
   );

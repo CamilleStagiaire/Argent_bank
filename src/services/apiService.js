@@ -18,7 +18,7 @@ const apiService = {
       } else {
         return {
           success: false,
-          message: data.message
+          message: data.message,
         };
       }
     } catch (error) {
@@ -47,6 +47,42 @@ const apiService = {
     } catch (error) {
       console.error('Erreur lors de la récupération du profil:', error);
       return null;
+    }
+  },
+
+  async updateUserProfile(token, firstName, lastName) {
+    try {
+      const response = await fetch(`${BASE_URL}/profile`, {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName: firstName,
+          lastName: lastName,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.status === 200) {
+        return {
+          success: true,
+          body: data.body,
+        };
+      } else {
+        return {
+          success: false,
+          message: data.message || `Erreur de status: ${response.status}`,
+        };
+      }
+    } catch (error) {
+      console.error('Erreur lors de la mise à jour:', error);
+      return {
+        success: false,
+        message: `Erreur lors de la mise à jour: ${error}`,
+      };
     }
   },
 };
