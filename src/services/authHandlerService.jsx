@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { signIn, setFirstName, setLastName } from '../../redux/userSlice';
-import localStorageService from '../../services/localStorageService';
+import { signIn, setFirstName, setLastName } from '../redux/userSlice';
+import localStorageService from './localStorageService';
 
 const AuthHandler = () => {
   const dispatch = useDispatch();

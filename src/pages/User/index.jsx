@@ -1,11 +1,10 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { useSelector} from 'react-redux';
 import Transactions from '../../components/Transactions';
-import { setShowTransactions } from '../../redux/userSlice';
 import data from '../../datas/data.json';
 
 const User = () => {
-  const showTransactions = useSelector((state) => state.user.showTransactions);
-  const dispatch = useDispatch();
+  const [showTransactions, setShowTransactions] = useState(null);
   const { firstName, lastName } = useSelector((state) => state.user);
 
   const accountSection = (type) => (
@@ -16,7 +15,7 @@ const User = () => {
         <p className="account-amount-description">{data[type].description}</p>
       </div>
       <div className="account-content-wrapper cta">
-        <button className="transaction-button" onClick={() => dispatch(setShowTransactions(type))}>View transactions</button>
+        <button className="transaction-button" onClick={() => setShowTransactions(type)}>View transactions</button>
       </div>
     </section>
   );
@@ -35,7 +34,7 @@ const User = () => {
       {showTransactions ? (
         <Transactions
           data={data[showTransactions]}
-          setShowTransactions={() => dispatch(setShowTransactions(null))}
+          setShowTransactions={() => setShowTransactions(null)}
         />
       ) : (
         <>

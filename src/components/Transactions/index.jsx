@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import Collapse from '../../components/Collapse';
 
 const Transactions = ({ data, setShowTransactions }) => {
-  const [activeDropdown, setActiveDropdown] = useState(null);
-  const [activeTextInput, setActiveTextInput] = useState(null);
+  const [activePencil, setActivePencil] = useState({ type: null, index: null });
 
   return (
     <div className="transaction">
@@ -32,13 +31,11 @@ const Transactions = ({ data, setShowTransactions }) => {
           {data.transactions.map((transaction, index) => (
             <React.Fragment key={transaction.date + transaction.description}>
               <tr className="transaction-list">
-                <td>
+              <td>
                   <Collapse
                     transaction={transaction}
-                    activeDropdown={activeDropdown}
-                    setActiveDropdown={setActiveDropdown}
-                    activeTextInput={activeTextInput}
-                    setActiveTextInput={setActiveTextInput}
+                    activePencil={activePencil}
+                    setActivePencil={setActivePencil}
                     index={index}
                   />
                 </td>

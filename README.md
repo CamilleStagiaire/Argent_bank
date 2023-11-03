@@ -36,7 +36,7 @@ getUserProfile pour obtenir le profil de l'utilisateur avec le token d'authentif
 
 - Intégration des informations de transaction:  
 fichier data.json et composant Transactions  
-mise en place du style avec le composant Collapse et wireframes.css  
+mise en place du style avec les composants Collapse, ToggleButton et le fichier wireframes.css  
 
 # Compétences évaluées:
 - S'authentifier à une API  

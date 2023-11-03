@@ -6,7 +6,7 @@ import User from './pages/User';
 import Footer from './components/Layout/Footer';
 import { Provider } from 'react-redux';
 import { store } from './redux/store.js';
-import AuthHandler from './components/AuthHandler';
+import AuthHandler from './services/authHandlerService.jsx';
 
 function App() {
   return (
