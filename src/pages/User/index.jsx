@@ -55,18 +55,20 @@ const User = () => {
           </h1>
           {isEditing ? (
             <>
-              <input 
+             <div className="edit"> 
+             <input 
                 value={editFirstName} 
                 onChange={(e) => setEditFirstName(e.target.value)} 
-                placeholder="First Name" 
+                placeholder= {firstName}
               />
               <input 
                 value={editLastName} 
                 onChange={(e) => setEditLastName(e.target.value)} 
-                placeholder="Last Name" 
+                placeholder= {lastName}
               />
-              <button onClick={handleChange}>Save</button>
-              <button onClick={() => { setIsEditing(false); resetEditFields(); }}>Cancel</button>
+              <button className="edit-button" onClick={handleChange}>Save</button>
+              <button className="edit-button" onClick={() => { setIsEditing(false); resetEditFields(); }}>Cancel</button>
+             </div>
             </>
           ) : (
             <button className="edit-button" onClick={() => setIsEditing(true)}>Edit Name</button>

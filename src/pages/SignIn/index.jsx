@@ -1,10 +1,12 @@
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { signIn, setFirstName, setLastName  } from '../../redux/userSlice';
 import localStorageService from '../../services/localStorageService';
 import apiService from '../../services/apiService';
 
 const SignIn = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -24,7 +26,7 @@ const SignIn = () => {
         dispatch(setLastName(profileResult.lastName));
         
         localStorageService.setAuthData(email, token, profileResult.firstName, profileResult.lastName);
-        window.location.href = '/profile';
+        navigate('/profile');
       }
     } else {
       alert(result.message);
