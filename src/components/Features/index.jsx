@@ -2,6 +2,10 @@ import iconChat from '../../assets/icon-chat.png';
 import iconMoney from '../../assets/icon-money.png';
 import iconSecurity from '../../assets/icon-security.png';
 
+/**
+ * Section de la page d'accueil
+ * @returns {React.ReactElement}
+ */
 const Features = () => {
   const featuresData = [
     {

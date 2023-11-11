@@ -8,21 +8,23 @@ https://github.com/CamilleStagiaire/Argent_bank.git
 # Etapes
 - Initialisation du projet:  
 
-**installation et lancement du backend:**  
+**installation et lancement du projet:**  
+- Back-end:  
 fork du repo existant  
 git clone https://github.com/CamilleStagiaire/Project-13-ArgentBank.git  
 npm run dev:server  
-npm run populate-db
-
-**Dossier argentbank:**  
+npm run populate-db  
+- Front-end:  
 npx create-react-app argentbank  
 npm install --save-dev eslint-config-prettier   
-npm install react-router-dom  
-  
+npm install react-router-dom 
+
+**Phase 1: Authentification des utilisateurs**    
 - Mise en place du front:  
 page Home  
 page SignIn  
 page User  
+page Error 
 
 - Installation des outils Redux:  
 npm install react-redux  
@@ -41,6 +43,9 @@ mise en place du style avec les composants Collapse, ToggleButton et le fichier 
 - Fonctionnalité de mise à jour du profil:  
 fonction updateUserProfile dans apiService  
 mise à jour de la vue dans User  
+
+**Phase 2: Transactions**  
+openapi.yaml  
 
 # Compétences évaluées:
 - S'authentifier à une API  

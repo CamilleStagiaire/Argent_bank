@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { signIn, setFirstName, setLastName } from '../redux/userSlice';
 import localStorageService from './localStorageService';
 
+// gestion de l'authentification utilisateur
 const AuthHandler = () => {
   const dispatch = useDispatch();
 

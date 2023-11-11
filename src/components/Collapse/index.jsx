@@ -1,9 +1,21 @@
 import React, { useState } from 'react';
 import ToggleButton from '../ToggleButton';
 
+/**
+ * Affiche/masque le détail d'une transaction
+ * @param {Object} props.transaction
+ * @param {Object} props.activePencil
+ * @param {Function} props.setActivePencil
+ * @param {number} props.index
+ * @returns {React.ReactElement}
+ */
 function Collapse({ transaction, activePencil, setActivePencil, index }) {
   const [isOpen, setIsOpen] = useState(false);
 
+  /**
+   * Met à jour l'état de activePencil
+   * @param {string} type
+   */
   const toggleState = (type) => {
     setActivePencil((prevState) => {
       if (prevState.type === type && prevState.index === index) {
@@ -13,6 +25,11 @@ function Collapse({ transaction, activePencil, setActivePencil, index }) {
     });
   };
 
+  /**
+   * Gestionnaire de touches
+   * @param {Event} e
+   * @param {Function} action
+   */
   const handleKeyDown = (e, action) => {
     if (['Enter', ' '].includes(e.key)) {
       action();

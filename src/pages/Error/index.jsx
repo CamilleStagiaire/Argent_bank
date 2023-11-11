@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
 
+/**
+ * Page d'erreur 404
+ * @returns {React.ReactElement} 
+ */
 function Error() {
 	return (
 		<div className="error">

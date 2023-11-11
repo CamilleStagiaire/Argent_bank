@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import Collapse from '../../components/Collapse';
 
+/**
+ * Affiche les transactions
+ * @param {Object} props
+ * @param {Object} props.data 
+ * @param {Function} props.setShowTransactions
+ * @returns {React.ReactElement} 
+ */
 const Transactions = ({ data, setShowTransactions }) => {
   const [activePencil, setActivePencil] = useState({ type: null, index: null });
 

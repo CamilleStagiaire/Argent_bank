@@ -1,5 +1,9 @@
 import Features from '../../components/Features';
 
+/**
+ * Page d'accueil
+ * @returns {React.ReactElement}
+ */
 function Home() {
   return (
     <main>

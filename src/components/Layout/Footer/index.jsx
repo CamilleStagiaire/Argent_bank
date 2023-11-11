@@ -1,3 +1,7 @@
+/**
+ * Footer de l'application
+ * @returns {React.ReactElement}
+ */
 const Footer = () => {
   return (
     <footer className="footer">

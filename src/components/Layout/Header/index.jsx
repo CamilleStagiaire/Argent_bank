@@ -4,6 +4,10 @@ import { signOut } from '../../../redux/userSlice';
 import logo from '../../../assets/argentBankLogo.png';
 import localStorageService from '../../../services/localStorageService';
 
+/**
+ * Header de l'application
+ * @returns {React.ReactElement}
+ */
 const Header = () => {
   const dispatch = useDispatch();
   const firstName = useSelector((state) => state.user.firstName);
@@ -23,7 +27,6 @@ const Header = () => {
           src={logo}
           alt="Argent Bank Logo"
           onClick={handleSignOut}
-
         />
         <h1 className="sr-only">Argent Bank</h1>
       </Link>

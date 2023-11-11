@@ -1,6 +1,14 @@
 const BASE_URL = 'http://localhost:3001/api/v1/user';
 
 const apiService = {
+  /**
+   * Authentifie un utilisateur en utilisant l'e-mail et le mot de passe
+   * @async
+   * @param {string} email
+   * @param {string} password
+   * @returns {Promise<Object>}
+   * @throws {Error}
+   */
   async login(email, password) {
     try {
       const response = await fetch(`${BASE_URL}/login`, {
@@ -27,6 +35,13 @@ const apiService = {
     }
   },
 
+  /**
+   * Récupère le profil de l'utilisateur en utilisant le token
+   * @async
+   * @param {string} token
+   * @returns {Promise<Object|null>}
+   * @throws {Error}
+   */
   async getUserProfile(token) {
     try {
       const response = await fetch(`${BASE_URL}/profile`, {
@@ -50,6 +65,15 @@ const apiService = {
     }
   },
 
+  /**
+   * Met à jour le profil de l'utilisateur en utilisant le token
+   * @async
+   * @param {string} token
+   * @param {string} firstName
+   * @param {string} lastName
+   * @returns {Promise<Object>}
+   * @throws {Error}
+   */
   async updateUserProfile(token, firstName, lastName) {
     try {
       const response = await fetch(`${BASE_URL}/profile`, {

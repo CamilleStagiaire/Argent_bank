@@ -6,6 +6,10 @@ import data from '../../datas/data.json';
 import localStorageService from '../../services/localStorageService';
 import apiService from '../../services/apiService';
 
+/**
+ * Page du profil utilisateur
+ * @returns {React.ReactElement}
+ */
 const User = () => {
   const [showTransactions, setShowTransactions] = useState(null);
   const { firstName, lastName } = useSelector((state) => state.user);
@@ -16,6 +20,11 @@ const User = () => {
   const dispatch = useDispatch();
   const { token } = localStorageService.getAuthData();
 
+  /**
+   * Génère une section de compte
+   * @param {string} type 
+   * @returns {React.ReactElement}
+   */
   const accountSection = (type) => (
     <section className="account">
       <div className="account-content-wrapper">
@@ -29,6 +38,10 @@ const User = () => {
     </section>
   );
 
+  /**
+   * Gère la modification du nom/prénom de l'utilisateur
+   * @returns {React.ReactElement}
+   */
   const handleChange = async () => {
     const result = await apiService.updateUserProfile(token, editFirstName, editLastName);
     if (result.success) {
@@ -40,11 +53,11 @@ const User = () => {
     }
   };
 
+  // Réinitialise les champs de modification du nom/prénom
   const resetEditFields = () => {
     setEditFirstName(firstName || "");
     setEditLastName(lastName || "");
 };
-
 
   return (
     <main className="main bg-dark">
