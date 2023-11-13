@@ -6,8 +6,6 @@ https://github.com/CamilleStagiaire/Argent_bank.git
 *Formation Développeur d'application - JavaScript React*
 
 # Etapes
-- Initialisation du projet:  
-
 **installation et lancement du projet:**  
 - Back-end:  
 fork du repo existant  

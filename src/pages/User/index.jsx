@@ -11,12 +11,12 @@ import apiService from '../../services/apiService';
  * @returns {React.ReactElement}
  */
 const User = () => {
-  const [showTransactions, setShowTransactions] = useState(null);
   const { firstName, lastName } = useSelector((state) => state.user);
+  const [showTransactions, setShowTransactions] = useState(null);
   const [editFirstName, setEditFirstName] = useState(firstName || "");
   const [editLastName, setEditLastName] = useState(lastName || "");
-  
   const [isEditing, setIsEditing] = useState(false);
+  
   const dispatch = useDispatch();
   const { token } = localStorageService.getAuthData();
 
@@ -37,7 +37,7 @@ const User = () => {
       </div>
     </section>
   );
-
+  
   /**
    * Gère la modification du nom/prénom de l'utilisateur
    * @returns {React.ReactElement}
@@ -52,13 +52,11 @@ const User = () => {
       console.error(result.message);
     }
   };
-
   // Réinitialise les champs de modification du nom/prénom
   const resetEditFields = () => {
     setEditFirstName(firstName || "");
     setEditLastName(lastName || "");
 };
-
   return (
     <main className="main bg-dark">
       {!showTransactions && (

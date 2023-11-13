@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { signIn, setFirstName, setLastName  } from '../../redux/userSlice';
 import localStorageService from '../../services/localStorageService';
 import apiService from '../../services/apiService';
+
 /**
  * Page de connexion
  * @returns {React.ReactElement}
@@ -10,6 +11,7 @@ import apiService from '../../services/apiService';
 const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
   /**
    * Gère la soumission du formulaire de connexion
    * @param {Event} event
