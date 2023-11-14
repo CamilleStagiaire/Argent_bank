@@ -26,7 +26,7 @@ const Header = () => {
           className="main-nav-logo-image"
           src={logo}
           alt="Argent Bank Logo"
-          onClick={handleSignOut}
+          //onClick={handleSignOut}
         />
         <h1 className="sr-only">Argent Bank</h1>
       </Link>
