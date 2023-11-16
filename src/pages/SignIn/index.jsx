@@ -1,4 +1,5 @@
-import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { signIn, setFirstName, setLastName  } from '../../redux/userSlice';
 import localStorageService from '../../services/localStorageService';
@@ -11,6 +12,13 @@ import apiService from '../../services/apiService';
 const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isAuthenticated = useSelector(state => state.user.isAuthenticated);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/profile');
+    }
+  }, [isAuthenticated, navigate]);
   
   /**
    * Gère la soumission du formulaire de connexion

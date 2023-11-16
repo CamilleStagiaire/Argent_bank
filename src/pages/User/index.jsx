@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect  } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { setFirstName, setLastName } from '../../redux/userSlice';
 import Transactions from '../../components/Transactions';
 import data from '../../datas/data.json';
@@ -11,14 +12,21 @@ import apiService from '../../services/apiService';
  * @returns {React.ReactElement}
  */
 const User = () => {
-  const { firstName, lastName } = useSelector((state) => state.user);
+  const { firstName, lastName, isAuthenticated  } = useSelector((state) => state.user);
   const [showTransactions, setShowTransactions] = useState(null);
   const [editFirstName, setEditFirstName] = useState(firstName || "");
   const [editLastName, setEditLastName] = useState(lastName || "");
   const [isEditing, setIsEditing] = useState(false);
   
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { token } = localStorageService.getAuthData();
+
+  useEffect(() => {
+    if (!isAuthenticated ) {
+      navigate('/login');
+    }
+  }, [isAuthenticated, navigate]);
 
   /**
    * Génère une section de compte
